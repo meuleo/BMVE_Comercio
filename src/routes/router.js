@@ -2,27 +2,15 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Componentes
-import NomesView from '../views/NomesView.vue'
+import TheInicio from '../views/InicioView.vue'
 
 // Rotas
 const routes = [
-  { path: '/', component: NomesView },
-  { 
-    path: '/ticar', 
-    component: () => import('../views/TicadosView.vue') 
-  },
-  { 
-    path: '/ptrimestre', 
-    component: () => import('../views/PorTrimestreView.vue')
-  },
-  { 
-    path: '/pmembros', 
-    component: () => import('../views/PorMembrosView.vue')
-  },
-  { 
-    path: '/pmembros-pdf', 
-    component: () => import('../views/PorMembrosPDFView.vue')
-  },
+  { path: '/', component: TheInicio },
+  // { 
+  //  path: '/ticar', 
+  //  component: () => import('../views/TicadosView.vue') 
+  // },
 ]
 
 const router = createRouter({

@@ -13,7 +13,7 @@ module.exports = defineConfig({
   chainWebpack: config => {
     config.plugin('html')
       .tap(args => {
-        args[0].title = 'AGD - Mordomia'; // Defina o título desejado aqui
+        args[0].title = 'BMVE Comercio'; // Defina o título desejado aqui
         return args;
       });
   }
