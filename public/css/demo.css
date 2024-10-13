@@ -1,0 +1,282 @@
+/* SALO */
+
+* {
+          font-family: Rubik, sans-serif !important;
+          color: rgba(0,0,0,0.7);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0; 
+        }
+
+        ul li {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;  
+        }
+        
+        .row {
+            padding: 0;
+            margin: 0;
+        }
+
+        .verde {
+            background-color: #5FCB71;  
+            background-color: #1e4356 !important; 
+            color: #fff !important;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 280px; /* Alterado para 280px */
+            background-color: #5FCB71;
+            color: #fff;
+            padding-top: 50px;
+        }
+        
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        #content {
+            margin-left: 280px; /* Width of sidebar */
+            padding-top: 0px; /* Height of topbar */
+        }
+        
+        #topbar {
+            position: fixed;
+            top: 0;
+            left: 280px; /* Alterado para 280px */
+            width: calc(100% - 280px); /* Width of sidebar */
+            max-width: calc(100% - 280px);
+            height: 50px;
+            background-color: #444;
+            color: #fff;
+            line-height: 50px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000; /* Ensure topbar is above other content */
+        }
+
+        .search {
+            position: fixed;
+            top: 0;
+            left: 280px; /* Alterado para 280px */
+            width: calc(100% - 280px); /* Width of sidebar */
+            max-width: calc(100% - 280px);
+            background-color: #444;
+            color: #fff;
+            box-sizing: border-box;
+            z-index: 1000; /* Ensure topbar is above other content */
+        }
+
+
+        #logo {
+            float: left;
+            margin-right: 20px;
+        }
+
+        #username {
+            float: right;
+        }
+
+        #username a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .topbar-mobile {
+            display: none;
+        }
+
+        /* Adiciona o media query para ocultar a barra lateral em telas menores que 780px */
+        @media (max-width: 950px) {
+            #sidebar {
+                z-index: 9990 !important;
+                width: 100%;
+                top: 50px;
+                height: 93%;
+            }
+
+            #content {
+                margin-left: 0;
+                padding-top: 50px; /* Height of topbar */
+            }
+            #topbar {
+                left: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .search {
+                top: 50px;
+                left: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .topbar-mobile {
+                display: block;
+            }
+
+            .box-maquina-escrever {
+                height: 100px;
+            }
+
+            .menu {
+               left: -100% !important;
+               transition: left 0.5s ease;
+             } 
+
+             .showMenu {
+               left: 0 !important;
+             }
+        }
+       
+        .box-card {
+            border: 4px solid #fafafa;
+            margin-bottom: 35px;
+            box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+        }
+        .box-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .typing-effect {
+  font-family: monospace;
+  font-size: 24px;
+}
+
+#cursor {
+  border-left: 2px solid black;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+.icon-menu {
+            padding-top: 10px
+        }
+
+        .traco-menu {
+            width: 25px;
+            height: 4px;
+            background-color: rgba(255,255,255,0.9);
+            margin: 4px 0;
+        }
+
+    .sidebar-li li, .sidebar-li li i, .sidebar-li li strong {
+        color: #fff !important;
+    }
+
+    .ver-mais {
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        background: #fff !important;    
+    }
+
+    .categorias li, .categorias h5 {
+        color: #fff;
+    }
+
+    .categorias li {
+        padding: 3px 0;
+    }
+
+    @keyframes moveUpDown {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+    
+    .ver-mais-profissionais {
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        background: #fff !important;    
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        animation: moveUpDown 1.5s ease-in-out infinite;
+    }
+
+/* Detalhar Profissional */
+        .box-card {
+            border: 4px solid #fafafa;
+            margin-bottom: 10px;
+            box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+        }
+        .box-image {
+            display: flex;
+            justify-content: center;
+        }
+        .carde-realizados {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .area-atuacao ul {
+            padding: 0
+        }
+
+        .area-atuacao ul li {
+            list-style-type: none;
+        }
+
+        .area-atuacao ul li img {
+            margin-right: 3px;
+        }
+
+        .trabalho-realizado ul {
+            padding: 0;
+            overflow-x: auto; /* Adiciona um scroll horizontal */
+            white-space: nowrap; /* Impede que os elementos da lista quebrem a linha */
+        }
+
+        .trabalho-realizado ul li {
+            list-style-type: none;
+            margin-right: 5px;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .trabalho-realizado ul li img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .routerlink {
+          text-decoration: none !important;
+          color: inherit !important;
+        }
+
