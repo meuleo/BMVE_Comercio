@@ -2,10 +2,16 @@ import { createStore } from 'vuex'
 
 const store = createStore({
   state: {
-    membros: [],
-    areas: [],
-    datas: [],
-    ticados: [],
+    funcionarios: [],
+    clientes: [],
+    fornecedores: [],
+
+    
+    compras: [],
+    vendas: [],
+    estoque: [],
+    produtos: [],
+    
   },
   mutations: {
    

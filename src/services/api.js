@@ -3,7 +3,7 @@ var bd = null;
 
 export function iniciarBaseDados() {
   return new Promise((resolve, reject) => {
-    var request = indexedDB.open('bd-contato', 1);
+    var request = indexedDB.open('bd-bmve', 1);
 
     request.addEventListener("error", (event) => {
       mostrarErro(event);
@@ -26,14 +26,14 @@ function mostrarErro(event) {
 
 function criarBanco(event) {
   bd = event.target.result;
-
-  // Criação da tabela Contatos com autoIncrement
-  var Contato = bd.createObjectStore("Contatos", { keyPath: "id", autoIncrement: true });
-  Contato.createIndex("BuscarNome", "Nome", { unique: false });
   
-  // Criação da tabela Imagens com autoIncrement
-  var Imagens = bd.createObjectStore("Imagens", { keyPath: "id", autoIncrement: true });
-  Imagens.createIndex("contatoId", "contatoId", { unique: false }); // Index para buscar imagens por ID de contato
+  // Criação da tabela Funcionarios com autoIncrement
+  bd.createObjectStore("Funcionario", { keyPath: "id", autoIncrement: true });
+  bd.createObjectStore("Fornecedor", { keyPath: "id", autoIncrement: true });
+  bd.createObjectStore("Cliente", { keyPath: "id", autoIncrement: true });
+  bd.createObjectStore("Compra", { keyPath: "id", autoIncrement: true });
+  // Contato.createIndex("BuscarNome", "Nome", { unique: false });
+
 
   console.log("Banco e tabelas criados.");
 }
@@ -70,6 +70,7 @@ export function listar(tabela) {
     var store = transaction.objectStore(tabela);
     var request = store.getAll(); // Obtém todos os registros
 
+    
     request.onsuccess = function(event) {
       resolve(event.target.result); // Retorna os registros
     };
@@ -81,23 +82,48 @@ export function listar(tabela) {
   });
 }
 
-// Função para editar um registro
-export function editar(data, tabela) {
-  return new Promise((resolve, reject) => {
-    var transaction = bd.transaction([tabela], "readwrite");
-    var store = transaction.objectStore(tabela);
-    var request = store.put(data); // Usa put para atualizar ou adicionar um registro
+export function buscarRegistoId(id, tabela) {
+  console.log("Buscando registro com ID:", id); // Adicione esta linha
 
-    request.onsuccess = function() {
-      console.log("Registro editado:", data);
-      resolve(data);
+  return new Promise((resolve, reject) => {
+    var transaction = bd.transaction([tabela], "readonly");
+    var store = transaction.objectStore("Funcionario");
+    var request = store.get(id); // Busca o registro pelo id
+
+    request.onsuccess = function(event) {
+      if (event.target.result) {
+        console.log("Registro encontrado:", event.target.result); // Adicione esta linha
+
+        resolve(event.target.result); // Retorna o registro encontrado
+      } else {
+        console.log("Registro não encontrado."); // Adicione esta linha
+        resolve(null); // Retorna null se o registro não for encontrado
+      }
     };
 
     request.onerror = function(event) {
-      console.error("Erro ao editar registro:", event.target.error);
+      console.error("Erro ao buscar registro pelo ID:", event.target.error);
       reject(event.target.error);
     };
   });
+}
+
+// Por editar
+export async function editar(data) {
+  // Crie um novo objeto com os valores atualizados
+//   const novoRegistro = {
+//     ...this.dadosObtidos, // Copie todos os valores do registro original
+//     nome: this.nome,    // Altere para o novo nome desejado
+//     batizado: this.batizado// Adicione outros campos atualizados conforme necessário
+// };
+
+
+const transactionTicados = bd.transaction("Funcionario", "readwrite");
+const store = transactionTicados.objectStore("Funcionario");
+
+// Use o método put() para atualizar o registro no IndexedDB
+await store.put(data);
+
 }
 
 // Função para eliminar um registro
